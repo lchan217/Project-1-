@@ -1,11 +1,13 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require_relative "cli.rb"
+require_relative "scraper.rb"
 require_relative "book.rb"
 
 class Scraper 
   URL = 'https://www.goodreads.com/choiceawards/best-of-the-best-2018'
-  #def self.find_choices
+  def self.find_choices
     html = open(URL)
     doc = Nokogiri::HTML(html)
     
@@ -19,6 +21,5 @@ class Scraper
     new_book.votes = votes
     new_book.previous_award = previous_award
     new_book
-    binding.pry
-  #end
+  end
 end 
