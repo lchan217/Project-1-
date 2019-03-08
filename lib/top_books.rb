@@ -8,6 +8,6 @@ module Project1
   # Your code goes here...
 end
 
-require_relative "cli.rb"
-require_relative "scraper.rb"
-require_relative "book.rb"
+require_relative "project1/cli"
+require_relative "project1/scraper"
+require_relative "project1/book"

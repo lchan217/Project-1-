@@ -1,10 +1,3 @@
-require 'pry'
-require 'nokogiri'
-require 'open-uri'
-require_relative "cli.rb"
-require_relative "scraper.rb"
-require_relative "book.rb"
-
 class Scraper 
   URL = 'https://www.goodreads.com/choiceawards/best-of-the-best-2018'
   def self.find_choices

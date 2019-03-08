@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby 
-
-require_relative "../lib/books.rb"
+require_relative "../lib/top_books.rb"
 
 CommandLineInterface.new.call
