@@ -18,15 +18,17 @@ class Scraper
     
     main = doc.css('.inlineblock.pollAnswer.resultShown')
     main.each_with_index do |book, i|
-      if chosen.title == nil 
-        chosen.title = main.css("img")[i].to_a[i][1].split(" by ")[0] 
+      new = Selected_book.new 
+      if new.title == nil
+        new.title = main.css("img")[i].to_a[i][1].split(" by ")[0] 
       end
-      if chosen.author == nil 
-        chosen.author = main.css("img")[i].to_a[i][1].split(" by ")[1] 
+      if new.author == nil
+        new.author = main.css("img")[i].to_a[i][1].split(" by ")[1]
       end
-      if chosen.total_votes == nil 
-        chosen.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
+      if new.total_votes == nil 
+        new.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
       end
+      binding.pry
     end
   end 
 end 
