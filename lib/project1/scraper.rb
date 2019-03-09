@@ -13,6 +13,7 @@ class Scraper
       new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][4]
       new_book.url = attributes.css(".pollAnswer__bookLink")[i]["href"]
     end 
-    binding.pry
   end
+  def self.show_detail
+  end 
 end 
