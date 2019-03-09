@@ -8,19 +8,19 @@ class Scraper
     main.each_with_index do |book, i|
       new_book = Book.new 
       new_book.genre = main[i].text.split("\n")[2]
-      new_book.url = main.css("a[href]").css("[href*='choiceawards']")[i].values
+      new_book.url = main.css("a[href]").css("[href*='choiceawards']")[i].values.join
       new_book.winner = main.css("img").css(".category__winnerImage")[i].values[1]
     end 
   end
-  def self.get_detail(chosen_book)
-    html = open("https://www.goodreads.com"+ chosen_book.url)
+  def self.get_detail(chosen)
+    html = open("https://www.goodreads.com"+chosen.url)
     doc = Nokogiri::HTML(html)
     
-    attributes = doc.css("#metacol")
-
-    chosen_book.title = attributes.css("#bookTitle").text.split("\n")[1].strip
-    chosen_book.author = attributes.css(".authorName").text
-    chosen_book.rating = attributes.css("#bookMeta").css("span").text.split("\n")[1].strip
-    chosen_book.number_of_ratings = attributes.css(".gr-hyperlink").text.split("\n")[2].strip
+    main = doc.css('.inlineblock.pollAnswer.resultShown')
+    main.each_with_index do |book, i|
+      chosen.title = main.css("img")[i].to_a[i][1].split(" by ")[0] 
+      chosen.author = main.css("img")[i].to_a[i][1].split(" by ")[1]  
+      chosen.total_votes = main.css("img")[i].to_a[1][1].split(" by ")[i] 
+    end
   end 
 end 

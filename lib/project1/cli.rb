@@ -9,7 +9,6 @@ class CommandLineInterface
   end 
   def find_choices
     Scraper.find_choices
-    binding.pry
   end 
   def show_books 
     puts "Please choose a genre."
@@ -17,7 +16,7 @@ class CommandLineInterface
       puts "#{i+1}. #{book.genre}"
     end 
     answer = gets.strip.to_i
-    if answer < 0 || answer > 20
+    if answer < 0 || answer > 21
       puts "This is not a valid number. Please try again."
       show_books
     # elsif answer != /[\d]/ 
@@ -25,13 +24,15 @@ class CommandLineInterface
     #   show_books
     else 
       puts "Great choice! Here are some more details."
-      chosen_book = Book.all[answer-1]
-      Scraper.get_detail(chosen_book)
+      chosen = Book.all[answer-1]
+      Scraper.get_detail(chosen)
     end 
-    show_selected_book(chosen_book)
+    show_selected_book(chosen)
   end 
-  def show_selected_book(chosen_book) 
-    puts "Title: #{chosen_book.title} - Author: #{chosen_book.author} - Rating (Out of 5): #{chosen_book.rating} - Number of Ratings: #{chosen_book.number_of_ratings}"
+  def show_selected_book(chosen) 
+    Book.all.each_with_index do |book, i|
+      puts "#{i+1}. #{chosen.title} by  #{chosen.author} - #{chosen.total_votes}"
+    end 
     puts "Would you 1. like to search another book or 2. learn where to buy the book?"
     answer = gets.strip.to_i 
     if answer == 1 
