@@ -4,15 +4,13 @@ class Scraper
     html = open(URL)
     doc = Nokogiri::HTML(html)
     
-    array = doc.css('.inlineblock.pollAnswer.resultShown').css('strong.uitext.result').text.split("\n")
-    votes = array.each_slice(5).to_a[1][1]
-    previous_award = array.each_slice(5).to_a[1][4]
-    title = doc.css(".pollAnswer__bookLink").css("img").first["alt"].split(" by ")[0]
-    author = doc.css(".pollAnswer__bookLink").css("img").first["alt"].split(" by ")[1]
+    title = doc.css(".pollAnswer__bookLink").css("img")
     
-    new_book = Book.new(title,author)
-    new_book.votes = votes
-    new_book.previous_award = previous_award
-    new_book
+    title.each do |book|
+      new_book = Book.new
+      new_book.title_and_author = book.first[1]
+    end 
+    binding.pry
   end
+
 end 
