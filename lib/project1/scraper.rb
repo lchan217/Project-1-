@@ -24,12 +24,4 @@ class Scraper
     chosen_book.rating = attributes.css("#bookMeta").css("span").text.split("\n")[1].strip
     chosen_book.number_of_ratings = attributes.css(".gr-hyperlink").text.split("\n")[2].strip
   end 
-  def self.get_reading_options(chosen_book)
-    html = open("https://www.goodreads.com"+ chosen_book.url)
-    doc = Nokogiri::HTML(html)
-    chosen_book.kindle = 
-    chosen_book.amazon = 
-    chosen_book.library = 
-    chosen_book.store = 
-  end 
 end 

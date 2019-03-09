@@ -38,8 +38,5 @@ class CommandLineInterface
     else 
       Scraper.get_reading_options(chosen_book)
     end 
-    show_reading_options(chosen_book)
-  end 
-  def show_reading_options(chosen_book)
   end 
 end 
