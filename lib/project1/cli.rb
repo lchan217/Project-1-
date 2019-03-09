@@ -31,7 +31,7 @@ class CommandLineInterface
   end 
   def show_selected_book(chosen) 
     Selected_book.all.each_with_index do |book, i|
-      puts "#{i+1}. #{book.title} by  #{book.author} - #{book.total_votes}"
+      puts "#{i+1}. #{book.title} by #{book.author} - #{book.total_votes}"
     end 
     # puts "Would you 1. like to search another book or 2. learn where to buy the book?"
     # answer = gets.strip.to_i 
