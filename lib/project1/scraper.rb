@@ -9,8 +9,8 @@ class Scraper
     attributes.each_with_index do |book, i|
       new_book = Book.new 
       new_book.title_and_author = attributes.css("img")[i].to_a[1][1]
-      new_book.votes = attributes.css('strong.uitext.result').text.split("\n")[1]
-      new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n")[4]
+      new_book.votes = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
+      new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][4]
     end 
     binding.pry
   end
