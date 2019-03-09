@@ -1,16 +1,14 @@
 class Scraper 
     def self.find_choices
-    html = open('https://www.goodreads.com/choiceawards/best-of-the-best-2018')
+    html = open('https://www.goodreads.com/choiceawards/best-books-2018')
     doc = Nokogiri::HTML(html)
     
-    attributes = doc.css('.inlineblock.pollAnswer.resultShown')
+    main = doc.css("div").css(".category")
     
-    attributes.each_with_index do |book, i|
+    main.each_with_index do |book, i|
       new_book = Book.new 
-      new_book.title_and_author = attributes.css("img")[i].to_a[1][1]
-      new_book.votes = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
-      new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][4]
-      new_book.url = attributes.css(".pollAnswer__bookLink")[i]["href"]
+      new_book.genre = main[i].text.split("\n")[2]
+      new_book.winner = main.css("img").css(".category__winnerImage")[i].values[1]
     end 
   end
   def self.get_detail(chosen_book)

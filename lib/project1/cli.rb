@@ -9,6 +9,7 @@ class CommandLineInterface
   end 
   def find_choices
     Scraper.find_choices
+    binding.pry
   end 
   def show_books 
     puts "Please choose a book."
