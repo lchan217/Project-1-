@@ -1,7 +1,6 @@
 class Scraper 
-  URL = 'https://www.goodreads.com/choiceawards/best-of-the-best-2018'
-  def self.find_choices
-    html = open(URL)
+    def self.find_choices
+    html = open('https://www.goodreads.com/choiceawards/best-of-the-best-2018')
     doc = Nokogiri::HTML(html)
     
     attributes = doc.css('.inlineblock.pollAnswer.resultShown')
@@ -14,6 +13,9 @@ class Scraper
       new_book.url = attributes.css(".pollAnswer__bookLink")[i]["href"]
     end 
   end
-  def self.show_detail
+  def self.show_detail(chosen_book)
+    html = open("https://www.goodreads.com"+ chosen_book.url)
+    doc = Nokogiri::HTML(html)
+
   end 
 end 
