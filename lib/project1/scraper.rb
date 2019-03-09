@@ -19,10 +19,9 @@ class Scraper
     main = doc.css('.inlineblock.pollAnswer.resultShown')
     main.each_with_index do |book, i|
       new = Selected_book.new 
-      new.title = book.css("img")[i].to_a[1][1].split(" by ")[0] 
-      new.author = book.css("img")[i].to_a[1][1].split(" by ")[1]
-      new.total_votes = book.css('strong.uitext.result').text.gsub("\n","").split("votes")[i]
-     binding.pry
+      new.title = main.css("img")[i].to_a[1][1].split(" by ")[0] 
+      new.author = main.css("img")[i].to_a[1][1].split(" by ")[1]
+      new.total_votes = main.css('strong.uitext.result').text.gsub("\n","").split("votes")[i]
     end
   end 
 end 
