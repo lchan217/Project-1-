@@ -1,5 +1,5 @@
 class Book
-  attr_accessor :votes, :previous_award, :title_and_author, :url, :title, :author, :rating, :number_of_ratings
+  attr_accessor :votes, :previous_award, :title_and_author, :url, :title, :author, :rating, :number_of_ratings, :description 
   @@all = [] 
   def initialize
  
