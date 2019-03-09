@@ -31,14 +31,17 @@ class CommandLineInterface
   end 
   def show_selected_book(chosen) 
     Selected_book.all.each_with_index do |book, i|
-      puts "#{i+1}. #{book.title} by #{book.author} - #{book.total_votes}"
+      puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
-    # puts "Would you 1. like to search another book or 2. learn where to buy the book?"
-    # answer = gets.strip.to_i 
-    # if answer == 1 
-    #   show_books
-    # else 
-    #   Scraper.get_reading_options(chosen_book)
-    # end 
-  end 
+    puts "Please pick a book or type 'back' to review more genres."
+    answer = gets.strip
+    if answer == "back"
+      show_books
+    else 
+      binding.pry
+      chosen = Selected_book.all[answer-1]
+      Scraper.final_detail(chosen)
+    end 
+    show_final_book(chosen)
+  end
 end 

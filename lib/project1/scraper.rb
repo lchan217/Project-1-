@@ -32,4 +32,12 @@ class Scraper
       end
     end
   end 
+  
+  def final_detail(chosen)
+    chosen.title
+    chosen.author
+    chosen.description
+    chosen.rating 
+    chosen.number_of_ratings
+  end 
 end 
