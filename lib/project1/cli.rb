@@ -34,14 +34,13 @@ class CommandLineInterface
       puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
-    answer = gets.strip
+    answer = gets.strip.to_i 
     if answer == "back"
       show_books
-    else 
-      binding.pry
-      chosen = Selected_book.all[answer-1]
-      Scraper.final_detail(chosen)
+    else
+      chosen1 = Selected_book.all[answer-1]
+      Scraper.final_detail(chosen1)
     end 
-    show_final_book(chosen)
+    show_final_book(chosen1)
   end
 end 

@@ -33,11 +33,14 @@ class Scraper
     end
   end 
   
-  def final_detail(chosen)
-    chosen.title
-    chosen.author
-    chosen.description
-    chosen.rating 
-    chosen.number_of_ratings
+  def self.final_detail(chosen1)
+    html = open("https://www.goodreads.com"+chosen1.url)
+    doc = Nokogiri::HTML(html)
+    
+    chosen1.title
+    chosen1.author
+    chosen1.description
+    chosen1.rating 
+    chosen1.number_of_ratings
   end 
 end 
