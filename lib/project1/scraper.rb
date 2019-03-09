@@ -11,6 +11,8 @@ class Scraper
       new_book.title_and_author = attributes.css("img")[i].to_a[1][1]
       new_book.votes = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
       new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][4]
+      new_book.url = attributes.css(".pollAnswer__bookLink")[i]["href"]
     end 
+    binding.pry
   end
 end 
