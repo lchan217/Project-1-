@@ -36,10 +36,10 @@ class CommandLineInterface
     if answer == 1 
       show_books
     else 
-      Scraper.get_reading_options
+      Scraper.get_reading_options(chosen_book)
     end 
-    show_reading_options
+    show_reading_options(chosen_book)
   end 
-  def show_reading_options
+  def show_reading_options(chosen_book)
   end 
 end 
