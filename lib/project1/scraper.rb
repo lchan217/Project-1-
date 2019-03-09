@@ -8,6 +8,7 @@ class Scraper
     main.each_with_index do |book, i|
       new_book = Book.new 
       new_book.genre = main[i].text.split("\n")[2]
+      new_book.url = main.css("a[href]").css("[href*='choiceawards']")[i].values
       new_book.winner = main.css("img").css(".category__winnerImage")[i].values[1]
     end 
   end

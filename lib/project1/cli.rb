@@ -5,16 +5,16 @@ class CommandLineInterface
     show_books
   end 
   def greeting
-    puts "Hello! What book would you like more information on?"
+    puts "Hello! What genre would you like more information on?"
   end 
   def find_choices
     Scraper.find_choices
     binding.pry
   end 
   def show_books 
-    puts "Please choose a book."
+    puts "Please choose a genre."
     Book.all.each_with_index do |book, i|
-      puts "#{i+1}. Title and Author: #{book.title_and_author} - Votes: #{book.votes} - Award Won: #{book.previous_award}"
+      puts "#{i+1}. #{book.genre}"
     end 
     answer = gets.strip.to_i
     if answer < 0 || answer > 20

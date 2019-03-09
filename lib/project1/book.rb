@@ -1,5 +1,5 @@
 class Book
-  attr_accessor :winner, :genre
+  attr_accessor :winner, :genre, :url
   @@all = [] 
   def initialize
  
