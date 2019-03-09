@@ -23,10 +23,12 @@ class Scraper
         new.title = main.css("img")[i].to_a[1][1].split(" by ")[0] 
         new.author = main.css("img")[i].to_a[1][1].split(" by ")[1]
         new.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
+        new.url = main.css(".pollAnswer__bookLink")[i]["href"] 
       else 
         new.title = main.css("img")[i].to_a[1][1].split(" by ")[0] 
         new.author = main.css("img")[i].to_a[1][1].split(" by ")[1]
         new.total_votes = main.css('strong.uitext.result').text.gsub("\n","").split("votes")[i]
+        new.url = main.css(".pollAnswer__bookLink")[i]["href"] 
       end
     end
   end 
