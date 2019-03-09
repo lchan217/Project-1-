@@ -3,6 +3,7 @@ class CommandLineInterface
     greeting
     find_choices
     show_books
+    show_selected_book(chosen_book)
   end 
   def greeting
     puts "Hello! What book would you like more information on?"
@@ -22,7 +23,11 @@ class CommandLineInterface
     else 
       puts "Great choice! Here are some more details."
       chosen_book = Book.all[answer-1]
-      Scraper.show_detail(chosen_book)
+      Scraper.get_detail(chosen_book)
     end 
+  end 
+  def show_selected_book(chosen_book) 
+    
+    puts "Title: #{chosen_book.title} - Author: #{chosen_book.author} - Rating (Out of 5): #{chosen_book.rating} - Number of Ratings: #{chosen_book.number_of_ratings}"
   end 
 end 
