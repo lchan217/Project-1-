@@ -2,7 +2,7 @@ class CommandLineInterface
   def call 
     greeting
     find_choices
-    # show_books
+    show_books
   end 
   def greeting
     puts "Hello! What book would you like more information on?"
@@ -10,12 +10,10 @@ class CommandLineInterface
   def find_choices
     Scraper.find_choices
   end 
-  # def show_books 
-  #   puts "Please choose a book."
-  #   Book.all.each_with_index |book, index|
-  #     puts "#{index+1}. #{book.title} by #{book.author} - number of votes: #{votes} = previous award: #{previous_award}"
-  #   end
-  #   input = gets.strip 
-  #   binding.pry
-  # end 
+  def show_books 
+    puts "Please choose a book."
+    Book.all.each_with_index do |book, i|
+      puts "#{i+1}. Title and Author: #{book.title_and_author} - Votes: #{book.votes} - Award Won: #{book.previous_award}"
+    end 
+  end 
 end 

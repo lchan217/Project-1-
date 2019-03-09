@@ -12,6 +12,5 @@ class Scraper
       new_book.votes = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
       new_book.previous_award = attributes.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][4]
     end 
-    binding.pry
   end
 end 
