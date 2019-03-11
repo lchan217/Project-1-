@@ -30,7 +30,6 @@ class CommandLineInterface
   end 
   def show_selected_book(chosen) 
     Selected_book.all.each_with_index do |book, i|
-      #clear here if not the first time
       puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
@@ -38,6 +37,7 @@ class CommandLineInterface
     if answer == "back"
       show_books
     elsif answer.to_i > 0 && answer.to_i < Selected_book.all.length
+      Selected_book.all.clear
       chosen1 = Selected_book.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
     else 
@@ -48,6 +48,7 @@ class CommandLineInterface
   end
   def show_final_book(chosen1)
     #clear here if not the first time
+    binding.pry
     puts "Author: #{chosen1.author} - Title: #{chosen1.title} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
     puts "Thank you! Come again soon!"
   end 
