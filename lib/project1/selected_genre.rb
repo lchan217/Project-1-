@@ -1,4 +1,4 @@
-class Selected_book 
+class Selected_genre
    attr_accessor :title, :author, :total_votes, :url, :title1, :author1, :description, :rating, :number_of_ratings
   @@all = [] 
   def initialize(title, author, url)

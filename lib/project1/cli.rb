@@ -20,7 +20,7 @@ class CommandLineInterface
     if answer > 0 && answer < Book.all.length
       puts "Great choice! Here are some more details."
       chosen = Book.all[answer-1]
-      Selected_book.all.clear #this clears all selected books so there's not a duplicate output
+      Selected_genre.all.clear #this clears all selected books so there's not a duplicate output
       Scraper.get_detail(chosen)
     else 
       puts "This is not a valid number. Please try again."
@@ -29,16 +29,17 @@ class CommandLineInterface
     show_selected_book(chosen)
   end 
   def show_selected_book(chosen) 
-    Selected_book.all.each_with_index do |book, i|
+    
+    Selected_genre.all.each_with_index do |book, i|
       puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
     answer = gets.strip
     if answer == "back"
       show_books
-    elsif answer.to_i > 0 && answer.to_i < Selected_book.all.length
-      Selected_book.all.clear
-      chosen1 = Selected_book.all[answer.to_i-1]
+    elsif answer.to_i > 0 && answer.to_i < Selected_genre.all.length
+      Selected_genre.all.clear
+      chosen1 = Selected_genre.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
     else 
       puts "This is not a valid number. Please try again."

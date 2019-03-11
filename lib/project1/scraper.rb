@@ -21,7 +21,7 @@ class Scraper
       title = main.css("img")[i].to_a[1][1].split(" by ")[0] 
       author = main.css("img")[i].to_a[1][1].split(" by ")[1]
       url = main.css(".pollAnswer__bookLink")[i]["href"] 
-      new = Selected_book.new(title, author, url)
+      new = Selected_genre.new(title, author, url)
       if chosen.url == "/choiceawards/best-of-the-best-2018"
         new.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
       else 

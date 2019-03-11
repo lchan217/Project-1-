@@ -11,4 +11,4 @@ end
 require_relative "project1/cli"
 require_relative "project1/scraper"
 require_relative "project1/book"
-require_relative "project1/selected_book"
+require_relative "project1/selected_genre"
