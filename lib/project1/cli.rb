@@ -29,6 +29,7 @@ class CommandLineInterface
   end 
   def show_selected_book(chosen) 
     Selected_book.all.each_with_index do |book, i|
+      #clear here if not the first time
       puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
@@ -45,6 +46,7 @@ class CommandLineInterface
     show_final_book(chosen1)
   end
   def show_final_book(chosen1)
+    #clear here if not the first time
     puts "Author: #{chosen1.author} - Title: #{chosen1.title} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
     puts "Thank you! Come again soon!"
   end 
