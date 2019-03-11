@@ -17,7 +17,7 @@ class CommandLineInterface
     end 
     puts "What genre would you like more information on?"
     answer = gets.strip.to_i
-    if answer > 0 && answer < Book.all.length
+    if answer > 0 && answer < Book.all.length+1
       puts "Great choice! Here are some more details."
       chosen = Book.all[answer-1]
       Selected_genre.all.clear #this clears all selected books so there's not a duplicate output
@@ -37,8 +37,7 @@ class CommandLineInterface
     answer = gets.strip
     if answer == "back"
       show_books
-    elsif answer.to_i > 0 && answer.to_i < Selected_genre.all.length
-      Selected_genre.all.clear
+    elsif answer.to_i > 0 && answer.to_i < Selected_genre.all.length+1
       chosen1 = Selected_genre.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
     else 
@@ -48,8 +47,6 @@ class CommandLineInterface
     show_final_book(chosen1)
   end
   def show_final_book(chosen1)
-    #clear here if not the first time
-    binding.pry
     puts "Author: #{chosen1.author} - Title: #{chosen1.title} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
     puts "Thank you! Come again soon!"
   end 
