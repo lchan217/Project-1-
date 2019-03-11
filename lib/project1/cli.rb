@@ -5,7 +5,7 @@ class CommandLineInterface
     show_books
   end 
   def greeting
-    puts "Hello! What genre would you like more information on?"
+    puts "Hello! Welcome to Goodreads."
   end 
   def find_choices
     Scraper.find_choices
@@ -15,17 +15,15 @@ class CommandLineInterface
     Book.all.each_with_index do |book, i|
       puts "#{i+1}. #{book.genre}"
     end 
+    puts "What genre would you like more information on?"
     answer = gets.strip.to_i
-    if answer < 0 || answer > 21
-      puts "This is not a valid number. Please try again."
-      show_books
-    # elsif answer != /[\d]/ 
-    #   puts "This is not a valid number. Please try again."
-    #   show_books
-    else 
+    if answer > 0 && answer < Book.all.length
       puts "Great choice! Here are some more details."
       chosen = Book.all[answer-1]
       Scraper.get_detail(chosen)
+    else 
+      puts "This is not a valid number. Please try again."
+      show_books
     end 
     show_selected_book(chosen)
   end 
@@ -37,9 +35,12 @@ class CommandLineInterface
     answer = gets.strip.to_i 
     if answer == "back"
       show_books
-    else
+    elsif answer > 0 && answer < Selected_book.all.length
       chosen1 = Selected_book.all[answer-1]
       Scraper.final_detail(chosen1)
+    else 
+      puts "This is not a valid number. Please try again."
+      show_selected_book(chosen)
     end 
     show_final_book(chosen1)
   end
