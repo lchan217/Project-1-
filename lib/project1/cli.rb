@@ -32,10 +32,10 @@ class CommandLineInterface
       puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
-    answer = gets.strip.to_i 
+    answer = gets.strip
     if answer == "back"
       show_books
-    elsif answer > 0 && answer < Selected_book.all.length
+    elsif answer.to_i > 0 && answer.to_i < Selected_book.all.length
       chosen1 = Selected_book.all[answer-1]
       Scraper.final_detail(chosen1)
     else 
