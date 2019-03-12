@@ -31,7 +31,7 @@ class CommandLineInterface
   def show_selected_book(chosen) 
     
     Selected_genre.all.each_with_index do |book, i|
-      puts "#{i+1}. #{book.title} by #{book.author} - number of votes: #{book.total_votes}"
+      puts "#{i+1}. #{book.title_and_author} - number of votes: #{book.total_votes}"
     end 
     puts "Please pick a book or type 'back' to review more genres."
     answer = gets.strip
@@ -47,7 +47,7 @@ class CommandLineInterface
     show_final_book(chosen1)
   end
   def show_final_book(chosen1)
-    puts "Author: #{chosen1.author} - Title: #{chosen1.title} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
+    puts "Title and Author: #{chosen1.title_and_author} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
       if answer == "yes"

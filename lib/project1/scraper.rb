@@ -11,7 +11,6 @@ class Scraper
       new_book.url = book.css("a[href]").css("[href*='choiceawards']")[0].values.join
       new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
     end 
-    binding.pry
   end
   def self.get_detail(chosen)
     html = open("https://www.goodreads.com"+chosen.url)
@@ -19,10 +18,9 @@ class Scraper
     
     main = doc.css('.inlineblock.pollAnswer.resultShown')
     main.each_with_index do |book, i|
-      title = main.css("img")[i].to_a[1][1].split(" by ")[0] 
-      author = main.css("img")[i].to_a[1][1].split(" by ")[1]
+      title_and_author = book.css("img").first["alt"] 
       url = main.css(".pollAnswer__bookLink")[i]["href"] 
-      new = Selected_genre.new(title, author, url)
+      new = Selected_genre.new(title_and_author, url)
       if chosen.url == "/choiceawards/best-of-the-best-2018"
         new.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
       else 
