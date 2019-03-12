@@ -6,10 +6,10 @@ class Scraper
     main = doc.css("div").css(".category")
     
     main.each_with_index do |book, i|
-      winner = book.css("img.category__winnerImage")[0]["alt"]
       genre = main[i].text.split("\n")[2]
-      new_book = Book.new(winner, genre)
+      new_book = Book.new(genre)
       new_book.url = main.css("a[href]").css("[href*='choiceawards']")[i].values.join
+      new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
     end 
   end
   def self.get_detail(chosen)

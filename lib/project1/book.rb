@@ -1,8 +1,7 @@
 class Book
   attr_accessor :winner, :genre, :url
   @@all = [] 
-  def initialize(winner, genre)
-    @winner = winner 
+  def initialize(genre)
     @genre = genre
     @@all << self 
   end 
