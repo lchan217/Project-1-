@@ -6,11 +6,12 @@ class Scraper
     main = doc.css("div").css(".category")
     
     main.each_with_index do |book, i|
-      genre = main[i].text.split("\n")[2]
+      genre = book.css("h4").text.strip
       new_book = Book.new(genre)
-      new_book.url = main.css("a[href]").css("[href*='choiceawards']")[i].values.join
+      new_book.url = book.css("a[href]").css("[href*='choiceawards']")[0].values.join
       new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
     end 
+    binding.pry
   end
   def self.get_detail(chosen)
     html = open("https://www.goodreads.com"+chosen.url)
