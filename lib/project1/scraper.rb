@@ -19,14 +19,15 @@ class Scraper
     main = doc.css('.inlineblock.pollAnswer.resultShown')
     main.each_with_index do |book, i|
       title_and_author = book.css("img").first["alt"] 
-      url = main.css(".pollAnswer__bookLink")[i]["href"] 
+      url = book.css(".pollAnswer__bookLink")[0]["href"]
       new = Selected_genre.new(title_and_author, url)
       if chosen.url == "/choiceawards/best-of-the-best-2018"
-        new.total_votes = main.css('strong.uitext.result').text.split("\n").each_slice(5).to_a[i][1]
+        new.total_votes = book.css('strong.uitext.result').first.text.gsub("votes","").strip
       else 
-        new.total_votes = main.css('strong.uitext.result').text.gsub("\n","").split("votes")[i]
+        new.total_votes = book.css('strong.uitext.result').text.gsub("votes","").strip
       end
     end
+    binding.pry
   end 
   
   def self.final_detail(chosen1)
