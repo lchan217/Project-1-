@@ -35,9 +35,9 @@ class CommandLineInterface
     end 
     puts "Please pick a book or type 'back' to review more genres."
     answer = gets.strip
-    if answer == "back"
-      show_genres
-    elsif answer.to_i > 0 && answer.to_i < Selected_genre.all.length+1
+    # if answer == "back"
+    #   show_genres
+    if answer.to_i > 0 && answer.to_i < Selected_genre.all.length+1
       chosen1 = Selected_genre.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
     else 
@@ -55,7 +55,7 @@ class CommandLineInterface
       elsif answer == "no" 
         puts "Thanks! Come again soon!"
       else
-        puts "Invalid Entry!" 
+        puts "This is not a valid number. Please try again." 
         show_final_book(chosen1)
       end
   end 
