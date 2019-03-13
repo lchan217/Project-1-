@@ -49,7 +49,7 @@ class CommandLineInterface
   def show_final_book(chosen1)
     puts "Title and Author: #{chosen1.title_and_author}"
     puts "Ratings: #{chosen1.rating}"
-    puts "Number of Ratings:#{chosen1.number_of_ratings}"
+    puts "Number of Ratings: #{chosen1.number_of_ratings}"
     puts "Description: #{chosen1.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
