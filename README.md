@@ -1,8 +1,9 @@
 
-Winners of the 2018 Goodreads Choice Awards
+# Project1
 
-This program allows users to see the winners of the 2018 Goodreads Choice Awards by genre. The user can then select a book from that genre to see more information about the book such as title, author, description, rating, and number of votes. 
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/project1`. To experiment with that code, run `bin/console` for an interactive prompt.
 
+TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
