@@ -1,21 +1,9 @@
 
 # Winners of the 2018 Goodreads Choice Awards 
 
-This program allows users to see the winners of the 2018 Goodreads Choice Awards by genre. The user can then select a book from that genre to see more information about the book such as title, author, description, rating, and number of votes
+This program allows users to see the winners of the 2018 Goodreads Choice Awards by genre. The user can then select a book from that genre to see more information about the book such as title, author, description, rating, and number of votes.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'project1'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install project1
 
