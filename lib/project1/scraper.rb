@@ -33,10 +33,10 @@ class Scraper
     html = open("https://www.goodreads.com"+chosen1.url)
     doc = Nokogiri::HTML(html)
     main = doc.css("#metacol")
-    chosen1.title = main.css("#bookTitle").text.gsub("\n","").strip
+    chosen1.title = main.css("#bookTitle").text
     chosen1.author = main.css(".authorName").text 
-    chosen1.description = main.css("#description").text.gsub("\n","").strip.gsub("...more","")
-    chosen1.rating = main.css("#bookMeta").css("span[itemprop]").text.gsub("\n","").strip
-    chosen1.number_of_ratings = main.css("a.gr-hyperlink").first.text.gsub("\n","").strip
+    chosen1.description = main.css("#description").text.gsub("more","")
+    chosen1.rating = main.css("#bookMeta").css("span[itemprop]").text
+    chosen1.number_of_ratings = main.css("a.gr-hyperlink").first.text
   end 
 end 
