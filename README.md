@@ -1,5 +1,5 @@
 
-##Winners of the 2018 Goodreads Choice Awards
+Winners of the 2018 Goodreads Choice Awards
 
 This program allows users to see the winners of the 2018 Goodreads Choice Awards by genre. The user can then select a book from that genre to see more information about the book such as title, author, description, rating, and number of votes. 
 
