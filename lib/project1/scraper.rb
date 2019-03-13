@@ -6,8 +6,8 @@ class Scraper
     main = doc.css("div").css(".category")
     
     main.each_with_index do |book, i|
-      genre = book.css("h4").text.strip
-      new_book =  Genre.new(genre)
+      name = book.css("h4").text.strip
+      new_book =  Genre.new(name)
       new_book.url = book.css("a[href]").css("[href*='choiceawards']")[0].values.join
       new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
     end 

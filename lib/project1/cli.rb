@@ -11,8 +11,8 @@ class CommandLineInterface
     Scraper.find_choices
   end 
   def show_genres 
-    Genre.all.each_with_index do |book, i|
-      puts "#{i+1}. #{book.genre}"
+    Genre.all.each_with_index do |genre, i|
+      puts "#{i+1}. #{genre.name}"
     end 
     puts "What genre would you like more information on?"
     answer = gets.strip.to_i

@@ -1,8 +1,8 @@
 class Genre
-  attr_accessor :winner, :genre, :url
+  attr_accessor :winner, :name, :url
   @@all = [] 
-  def initialize(genre)
-    @genre = genre
+  def initialize(name)
+    @name = name 
     @@all << self 
   end 
   def self.all 
