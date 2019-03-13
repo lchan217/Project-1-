@@ -11,7 +11,6 @@ class CommandLineInterface
     Scraper.find_choices
   end 
   def show_genres 
-    puts "Please choose a genre."
     Book.all.each_with_index do |book, i|
       puts "#{i+1}. #{book.genre}"
     end 
@@ -35,8 +34,9 @@ class CommandLineInterface
     end 
     puts "Please pick a book or type 'back' to review more genres."
     answer = gets.strip
-    # if answer == "back"
-    #   show_genres
+    if answer == "back"
+      show_genres
+    end
     if answer.to_i > 0 && answer.to_i < Selected_genre.all.length+1
       chosen1 = Selected_genre.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
