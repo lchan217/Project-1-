@@ -1,5 +1,5 @@
 class Scraper 
-    def self.find_choices
+  def self.find_choices
     html = open('https://www.goodreads.com/choiceawards/best-books-2018')
     doc = Nokogiri::HTML(html)
     

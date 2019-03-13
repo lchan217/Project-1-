@@ -18,16 +18,16 @@ class CommandLineInterface
     answer = gets.strip.to_i
     if answer.between?(1,Genre.all.length)
       puts "Great choice! Here are some more details."
-      chosen = Genre.all[answer-1]
+      chosen_genre = Genre.all[answer-1]
       Selected_book.all.clear #this clears all selected books so there's not a duplicate output
-      Scraper.get_detail(chosen)
+      Scraper.get_detail(chosen_genre)
     else 
       puts "This is not a valid number. Please try again."
       show_genres
     end
-    show_selected_book(chosen)
+    show_selected_book(chosen_genre)
   end 
-  def show_selected_book(chosen) 
+  def show_selected_book(chosen_genre) 
     Selected_book.all.each_with_index do |book, i|
       puts "#{i+1}. #{book.title_and_author} - number of votes: #{book.total_votes}"
     end 
@@ -37,29 +37,29 @@ class CommandLineInterface
       show_genres
     end
     if answer.to_i.between?(1,Selected_book.all.length)
-      chosen1 = Selected_book.all[answer.to_i-1]
-      Scraper.final_detail(chosen1)
+      chosen_book = Selected_book.all[answer.to_i-1]
+      Scraper.final_detail(chosen_book)
     else 
       puts "This is not a valid number. Please try again."
-      show_selected_book(chosen)
+      show_selected_book(chosen_genre)
     end 
-    show_final_book(chosen1)
+    show_final_book(chosen_book)
   end
-  def show_final_book(chosen1)
-    puts "Title and Author: #{chosen1.title_and_author}"
-    puts "Ratings: #{chosen1.rating}"
-    puts "Number of Ratings: #{chosen1.number_of_ratings}"
-    puts "Description: #{chosen1.description}"
+  def show_final_book(chosen_book)
+    puts "Title and Author: #{chosen_book.title_and_author}"
+    puts "Ratings: #{chosen_book.rating}"
+    puts "Number of Ratings: #{chosen_book.number_of_ratings}"
+    puts "Description: #{chosen_book.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
       if answer == "yes" || answer == "y"
-          show_selected_book(chosen1)
+          show_selected_book(chosen_book)
       elsif answer == "no" || answer == "n"
         puts "Thanks! Come again soon!"
         exit 
       else
         puts "This is not a valid number. Please try again." 
-        show_final_book(chosen1)
+        show_final_book(chosen_book)
       end
   end 
 end 
