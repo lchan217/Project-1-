@@ -1,4 +1,4 @@
-class Book
+class Genre
   attr_accessor :winner, :genre, :url
   @@all = [] 
   def initialize(genre)

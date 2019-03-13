@@ -7,7 +7,7 @@ class Scraper
     
     main.each_with_index do |book, i|
       genre = book.css("h4").text.strip
-      new_book = Book.new(genre)
+      new_book =  Genre.new(genre)
       new_book.url = book.css("a[href]").css("[href*='choiceawards']")[0].values.join
       new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
     end 
@@ -21,7 +21,7 @@ class Scraper
     main.each_with_index do |book, i|
       title_and_author = book.css("img").first["alt"] 
       url = book.css(".pollAnswer__bookLink")[0]["href"]
-      new = Selected_genre.new(title_and_author, url)
+      new = Selected_book.new(title_and_author, url)
       if chosen.url == "/choiceawards/best-of-the-best-2018"
         new.total_votes = book.css('strong.uitext.result').first.text.gsub("votes","").strip
       else 
