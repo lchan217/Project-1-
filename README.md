@@ -9,7 +9,7 @@ This program allows users to see the winners of the 2018 Goodreads Choice Awards
 
 ## Usage
 
-TODO: Write usage instructions here
+Please type ruby bin/books to start the program. 
 
 ## Development
 
