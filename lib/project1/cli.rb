@@ -16,7 +16,7 @@ class CommandLineInterface
     end 
     puts "What genre would you like more information on?"
     answer = gets.strip.to_i
-    if answer > 0 && answer < Genre.all.length+1
+    if answer.between?(1,Genre.all.length)
       puts "Great choice! Here are some more details."
       chosen = Genre.all[answer-1]
       Selected_book.all.clear #this clears all selected books so there's not a duplicate output
@@ -36,7 +36,7 @@ class CommandLineInterface
     if answer == "back"
       show_genres
     end
-    if answer.to_i > 0 && answer.to_i < Selected_book.all.length+1
+    if answer.to_i.between?(1,Selected_book.all.length)
       chosen1 = Selected_book.all[answer.to_i-1]
       Scraper.final_detail(chosen1)
     else 
