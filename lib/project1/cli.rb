@@ -47,12 +47,15 @@ class CommandLineInterface
     show_final_book(chosen1)
   end
   def show_final_book(chosen1)
-    puts "Title and Author: #{chosen1.title_and_author} - Ratings: #{chosen1.rating} - Number of Ratings:#{chosen1.number_of_ratings} - Description: #{chosen1.description}"
+    puts "Title and Author: #{chosen1.title_and_author}"
+    puts "Ratings: #{chosen1.rating}"
+    puts "Number of Ratings:#{chosen1.number_of_ratings}"
+    puts "Description: #{chosen1.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
-      if answer == "yes"
+      if answer == "yes" || answer == "y"
           show_selected_book(chosen1)
-      elsif answer == "no" 
+      elsif answer == "no" || answer == "n"
         puts "Thanks! Come again soon!"
       else
         puts "This is not a valid number. Please try again." 

@@ -27,7 +27,6 @@ class Scraper
         new.total_votes = book.css('strong.uitext.result').text.gsub("votes","").strip
       end
     end
-    binding.pry
   end 
   
   def self.final_detail(chosen1)
