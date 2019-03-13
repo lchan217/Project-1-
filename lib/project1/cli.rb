@@ -28,7 +28,6 @@ class CommandLineInterface
     show_selected_book(chosen)
   end 
   def show_selected_book(chosen) 
-    
     Selected_genre.all.each_with_index do |book, i|
       puts "#{i+1}. #{book.title_and_author} - number of votes: #{book.total_votes}"
     end 
@@ -57,6 +56,7 @@ class CommandLineInterface
           show_selected_book(chosen1)
       elsif answer == "no" || answer == "n"
         puts "Thanks! Come again soon!"
+        exit 
       else
         puts "This is not a valid number. Please try again." 
         show_final_book(chosen1)
