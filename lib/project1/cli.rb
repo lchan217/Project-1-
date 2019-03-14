@@ -11,9 +11,14 @@ class CommandLineInterface
     Scraper.find_choices
   end 
   def show_genres 
+    rows = []
     Genre.all.each_with_index do |genre, i|
-      puts "#{i+1}. #{genre.name}"
+      rows << [i+1, genre.name]
+      #puts "#{i+1}. #{genre.name}"
     end 
+    table = Terminal::Table.new :headings => ['Number', 'Genre'], :rows => rows
+    puts table 
+    
     puts "What genre would you like more information on?"
     answer = gets.strip.to_i
     if answer.between?(1,Genre.all.length)
@@ -32,7 +37,7 @@ class CommandLineInterface
     Selected_book.all.each_with_index do |book, i|
       rows << [i+1, book.title_and_author, book.total_votes]
     end 
-    table = Terminal::Table.new :headings => ['Number', 'Title and Author','Number of Votes'], :rows => rows
+    table = Terminal::Table.new :headings => ['Number', 'Title and Author','# of Votes'], :rows => rows
     puts table 
     puts "Please pick a number or type 'back' to review more genres."
     answer = gets.strip
@@ -49,13 +54,9 @@ class CommandLineInterface
     show_final_book(chosen_book)
   end
   def show_final_book(chosen_book)
-    rows = [] 
-    
-    rows << ['Title and Author:', chosen_book.title_and_author]
-    rows << ['Ratings:', chosen_book.rating]
-    rows << ['Number of Ratings:', chosen_book.number_of_ratings]
-    table = Terminal::Table.new :rows => rows
-    puts table 
+    puts "Title and Author: #{chosen_book.title_and_author}"
+    puts "Ratings: #{chosen_book.rating}"
+    puts "Number of Ratings: #{chosen_book.number_of_ratings}"
     puts "Description: #{chosen_book.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
