@@ -55,7 +55,7 @@ class CommandLineInterface
   end
   def show_final_book(chosen_book)
     puts "Title and Author: #{chosen_book.title_and_author}"
-    puts "Ratings: #{chosen_book.rating}"
+    puts "Rating (Out of 5): #{chosen_book.rating}"
     puts "Number of Ratings: #{chosen_book.number_of_ratings}"
     puts "Description: #{chosen_book.description}"
     puts "Would you like to see another book? (yes/no)"
