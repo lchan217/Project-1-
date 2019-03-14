@@ -2,6 +2,7 @@ require_relative "project1/version"
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'terminal-table'
 
 module Project1
  

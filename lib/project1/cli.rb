@@ -46,9 +46,13 @@ class CommandLineInterface
     show_final_book(chosen_book)
   end
   def show_final_book(chosen_book)
-    puts "Title and Author: #{chosen_book.title_and_author}"
-    puts "Ratings: #{chosen_book.rating}"
-    puts "Number of Ratings: #{chosen_book.number_of_ratings}"
+    rows = [] 
+    
+    rows << ['Title and Author:', chosen_book.title_and_author]
+    rows << ['Ratings:', chosen_book.rating]
+    rows << ['Number of Ratings:', chosen_book.number_of_ratings]
+    table = Terminal::Table.new :rows => rows
+    puts table 
     puts "Description: #{chosen_book.description}"
     puts "Would you like to see another book? (yes/no)"
     answer = gets.chomp.downcase
