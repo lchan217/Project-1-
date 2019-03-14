@@ -22,16 +22,16 @@ class CommandLineInterface
     answer = gets.strip.to_i
     if answer.between?(1,Genre.all.length)
       puts "Great choice! Here are some more details."
-      chosen_genre = Genre.all[answer-1]
+      chosen_book = Genre.all[answer-1]
       Selected_book.all.clear #this clears all selected books so there's not a duplicate output
-      Scraper.get_detail(chosen_genre)
+      Scraper.get_detail(chosen_book)
     else 
       puts "This is not a valid number. Please try again."
       show_genres
     end
-    show_selected_book(chosen_genre)
+    show_selected_book(chosen_book)
   end 
-  def show_selected_book(chosen_genre)
+  def show_selected_book(chosen_book)
     rows = [] 
     Selected_book.all.each_with_index do |book, i|
       rows << [i+1, book.title_and_author]

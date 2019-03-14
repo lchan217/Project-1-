@@ -12,8 +12,8 @@ class Scraper
       new_genre.winner = genre.css("img.category__winnerImage")[0]["alt"]
     end 
   end
-  def self.get_detail(chosen)
-    html = open("https://www.goodreads.com"+chosen.url)
+  def self.get_detail(chosen_book)
+    html = open("https://www.goodreads.com"+chosen_book.url)
     doc = Nokogiri::HTML(html)
     
     main = doc.css('.inlineblock.pollAnswer.resultShown')
@@ -22,7 +22,7 @@ class Scraper
       title_and_author = book.css("img").first["alt"] 
       url = book.css(".pollAnswer__bookLink")[0]["href"]
       new = Selected_book.new(title_and_author, url)
-      if chosen.url == "/choiceawards/best-of-the-best-2018"
+      if chosen_book.url == "/choiceawards/best-of-the-best-2018"
         new.total_votes = book.css('strong.uitext.result').first.text.gsub("votes","").strip
       else 
         new.total_votes = book.css('strong.uitext.result').text.gsub("votes","").strip
@@ -30,16 +30,16 @@ class Scraper
     end
   end 
   
-  def self.final_detail(chosen1)
-    html = open("https://www.goodreads.com"+chosen1.url)
+  def self.final_detail(chosen_book2)
+    html = open("https://www.goodreads.com"+chosen_book2.url)
     doc = Nokogiri::HTML(html)
     
     main = doc.css("#metacol")
     
-    chosen1.title = main.css("#bookTitle").text
-    chosen1.author = main.css(".authorName").text 
-    chosen1.description = main.css("#description").text.gsub("more","")
-    chosen1.rating = main.css("#bookMeta").css("span[itemprop]").text.gsub("\n","").strip
-    chosen1.number_of_ratings = main.css("a.gr-hyperlink").first.text.gsub("\n","").strip
+    chosen_book2.title = main.css("#bookTitle").text
+    chosen_book2.author = main.css(".authorName").text 
+    chosen_book2.description = main.css("#description").text.gsub("more","")
+    chosen_book2.rating = main.css("#bookMeta").css("span[itemprop]").text.gsub("\n","").strip
+    chosen_book2.number_of_ratings = main.css("a.gr-hyperlink").first.text.gsub("\n","").strip
   end 
 end 
