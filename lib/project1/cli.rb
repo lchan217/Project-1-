@@ -27,11 +27,14 @@ class CommandLineInterface
     end
     show_selected_book(chosen_genre)
   end 
-  def show_selected_book(chosen_genre) 
+  def show_selected_book(chosen_genre)
+    rows = [] 
     Selected_book.all.each_with_index do |book, i|
-      puts "#{i+1}. #{book.title_and_author} - number of votes: #{book.total_votes}"
+      rows << [i+1, book.title_and_author, book.total_votes]
     end 
-    puts "Please pick a book or type 'back' to review more genres."
+    table = Terminal::Table.new :headings => ['Number', 'Title and Author','Number of Votes'], :rows => rows
+    puts table 
+    puts "Please pick a number or type 'back' to review more genres."
     answer = gets.strip
     if answer == "back"
       show_genres
