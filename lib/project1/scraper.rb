@@ -5,11 +5,11 @@ class Scraper
     
     main = doc.css("div").css(".category")
     
-    main.each_with_index do |book, i|
-      name = book.css("h4").text.strip
-      new_book =  Genre.new(name)
-      new_book.url = book.css("a[href]").css("[href*='choiceawards']")[0].values.join
-      new_book.winner = book.css("img.category__winnerImage")[0]["alt"]
+    main.each_with_index do |genre, i|
+      name = genre.css("h4").text.strip
+      new_genre =  Genre.new(name)
+      new_genre.url = genre.css("a[href]").css("[href*='choiceawards']")[0].values.join
+      new_genre.winner = genre.css("img.category__winnerImage")[0]["alt"]
     end 
   end
   def self.get_detail(chosen)

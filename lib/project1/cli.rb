@@ -14,7 +14,6 @@ class CommandLineInterface
     rows = []
     Genre.all.each_with_index do |genre, i|
       rows << [i+1, genre.name]
-      #puts "#{i+1}. #{genre.name}"
     end 
     table = Terminal::Table.new :headings => ['Number', 'Genre'], :rows => rows
     puts table 
