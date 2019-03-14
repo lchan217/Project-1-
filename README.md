@@ -6,6 +6,7 @@ This program allows users to see the winners of the 2018 Goodreads Choice Awards
 ## Installation
 
     $ gem install project1
+    $ bundle install
 
 ## Usage
 
