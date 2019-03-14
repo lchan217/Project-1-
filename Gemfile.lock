@@ -12,6 +12,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rake (10.5.0)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
+    unicode-display_width (1.5.0)
 
 PLATFORMS
   ruby
@@ -21,6 +24,7 @@ DEPENDENCIES
   project1!
   pry
   rake (~> 10.0)
+  terminal-table
 
 BUNDLED WITH
    1.17.3
