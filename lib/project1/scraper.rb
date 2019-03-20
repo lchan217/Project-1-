@@ -8,7 +8,7 @@ class Scraper
     main.each_with_index do |genre, i|
       name = genre.css("h4").text.strip
       new_genre =  Genre.new(name)
-      new_genre.url = genre.css("a[href]").css("[href*='choiceawards']")[0].values.join
+      new_genre.url = genre.css("a[href]")[0].values.join
       new_genre.winner = genre.css("img.category__winnerImage")[0]["alt"]
     end 
   end
