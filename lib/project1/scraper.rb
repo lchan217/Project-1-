@@ -30,16 +30,16 @@ class Scraper
     end
   end 
   
-  def self.final_detail(chosen_book2)
-    html = open("https://www.goodreads.com"+chosen_book2.url)
+  def self.final_detail(chosen_book)
+    html = open("https://www.goodreads.com"+chosen_book.url)
     doc = Nokogiri::HTML(html)
     
     main = doc.css("#metacol")
     
-    chosen_book2.title = main.css("#bookTitle").text
-    chosen_book2.author = main.css(".authorName").text 
-    chosen_book2.description = main.css("#description").text.gsub("more","")
-    chosen_book2.rating = main.css("#bookMeta").css("span[itemprop]").text.gsub("\n","").strip
-    chosen_book2.number_of_ratings = main.css("a.gr-hyperlink").first.text.gsub("\n","").strip
+    chosen_book.title = main.css("#bookTitle").text
+    chosen_book.author = main.css(".authorName").text 
+    chosen_book.description = main.css("#description").text.gsub("more","")
+    chosen_book.rating = main.css("#bookMeta").css("span[itemprop]").text.gsub("\n","").strip
+    chosen_book.number_of_ratings = main.css("a.gr-hyperlink").first.text.gsub("\n","").strip
   end 
 end 
