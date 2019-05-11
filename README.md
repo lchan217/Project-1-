@@ -1,5 +1,5 @@
 
-# Winners of the 2018 Goodreads Choice Awards 
+# Winners of the 2018 Goodreads Choice Awards
 
 This program allows users to see the winners of the 2018 Goodreads Choice Awards by genre. The user can then select a book from that genre to see more information about the book such as title, author, description, rating, and number of votes.
 
@@ -10,11 +10,11 @@ This program allows users to see the winners of the 2018 Goodreads Choice Awards
 
 ## Usage
 
-Please type ruby bin/books to start the program. 
+Please type ruby bin/books to start the program.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow youcd to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
