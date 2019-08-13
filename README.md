@@ -8,6 +8,12 @@ This program allows users to see the winners of the 2018 Goodreads Choice Awards
     $ gem install project1
     $ bundle install
 
+## Technologies and Frameworks
+Ruby, Nokogiri 
+
+## Demo
+https://www.youtube.com/watch?v=xOYFTuSu-vs
+
 ## Usage
 
 Please type ruby bin/books to start the program.
